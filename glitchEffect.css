@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  background: #d73e32;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glitchText {
+  position: relative;
+  font-family: 'Staatliches', cursive;
+  font-size: 25vh;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.glitchText:before,
+.glitchText:after {
+  content: 'GLITCH';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  overflow: hidden;
+  background: #d73e32;
+  color: #fff;
+}
+
+.glitchText:before {
+  left: 8px;
+  text-shadow: 2px 0 #00ffea;
+  animation: glitch 3s infinite linear;
+}
+.glitchText:after {
+  left: 3px;
+  text-shadow: -2px 0 #fe3a7f;
+  animation: glitch 3s infinite linear;
+}
+
+@keyframes glitch{
+  $steps:50;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(300)+px,9999px,random(315)+px,0);
+    }
+  }
+}
